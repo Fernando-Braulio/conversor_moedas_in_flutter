@@ -37,6 +37,18 @@ class _HomeState extends State<Home> {
   double dolar;
   double euro;
 
+  void _realChanged(String text){
+    print(text);
+  }
+
+  void _dolarChanged(String text){
+    print(text);
+  }
+
+  void _euroChanged(String text){
+    print(text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,11 +89,11 @@ class _HomeState extends State<Home> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       Icon(Icons.monetization_on, size: 150.0, color: Colors.amber),
-                      buildTextField("Reais", "R\$ "),
+                      buildTextField("Reais", "R\$ ", realController, _realChanged),
                       Divider(),
-                      buildTextField("Dólares", "US\$ "),
+                      buildTextField("Dólares", "US\$ ", dolarController, _dolarChanged),
                       Divider(),
-                      buildTextField("Euros", "€ "),
+                      buildTextField("Euros", "€ ", euroController, _euroChanged),
                     ],
                   ),
                 );
@@ -92,8 +104,9 @@ class _HomeState extends State<Home> {
   }
 }
 
-Widget buildTextField(String label, String prefix, TextEditingController controller){
+Widget buildTextField(String label, String prefix, TextEditingController controller, Function fun){
   return TextField(
+    controller: controller,
     decoration: InputDecoration(
         labelText: label,
         labelStyle: TextStyle(color: Colors.amber),
@@ -103,5 +116,7 @@ Widget buildTextField(String label, String prefix, TextEditingController control
     style: TextStyle(
         color: Colors.amber,
         fontSize: 25.0),
+    onChanged: fun,
+    keyboardType: TextInputType.number,
   );
 }
