@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
                           labelText: "Euros",
                           labelStyle: TextStyle(color: Colors.amber),
                           border: OutlineInputBorder(),
-                          prefixText: "£ "
+                          prefixText: "€ "
                         ),
                         style: TextStyle(
                             color: Colors.amber,
